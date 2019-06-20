@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: proxy-server
+
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  routes:
+    oauth-server:
+      path: /oauth-server/**
+      url: http://localhost:8081/oauth
+    employee-service:
+      path: /employee-service/**
+      url: http://localhost:8082/emscloud
+#    allocationService:
+#      path: /allocation-service/**
+#      serviceId: allocation-service
